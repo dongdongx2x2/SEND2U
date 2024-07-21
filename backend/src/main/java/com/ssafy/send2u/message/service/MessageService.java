@@ -27,7 +27,7 @@ public class MessageService {
 
     @Transactional
     public List<MessageDto> getAllMessages() {
-        List<MessageDto> list = messageRepository.findAll().stream().map(MessageDto::new).collect(Collectors.toList());
+        List<MessageDto> list = messageRepository.findAllWithUsers().stream().map(MessageDto::new).collect(Collectors.toList());
         return list;
     }
 
@@ -85,10 +85,10 @@ public class MessageService {
 
         Message message = new Message();
         message.setContent(messageDto.getContent());
-        message.setTop(messageDto.getTop());
-        message.setLeft(messageDto.getLeft());
-        message.setRotate(messageDto.getRotate());
-        message.setZindex(messageDto.getZindex());
+        message.setTopPosition(messageDto.getTop());
+        message.setLeftPosition(messageDto.getLeft());
+        message.setRotationAngle(messageDto.getRotate());
+        message.setZIndexValue(messageDto.getZindex());
         message.setType(messageDto.getType());
         message.setBgcolor(messageDto.getBgcolor());
         message.setSender(sender);
@@ -107,16 +107,16 @@ public class MessageService {
                 .orElseThrow(() -> new IllegalArgumentException("Invalid message Id: " + messageId));
 
         if (top != null) {
-            message.setTop(top);
+            message.setTopPosition(top);
         }
         if (left != null) {
-            message.setLeft(left);
+            message.setLeftPosition(left);
         }
         if (rotate != null) {
-            message.setRotate(rotate);
+            message.setRotationAngle(rotate);
         }
         if (zindex != null) {
-            message.setZindex(zindex);
+            message.setZIndexValue(zindex);
         }
 
         Message updatedMessage = messageRepository.save(message);
