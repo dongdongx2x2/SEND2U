@@ -89,10 +89,10 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         Message message = new Message();
         message.setContent("좌측 상단에 물음표를 눌러서 사용방법을 알아보세용!");
         message.setReceiver(user);
-        message.setLeft(0.34014f);
-        message.setTop(0.716084f);
-        message.setRotate(2.04852f);
-        message.setZindex(1L);
+        message.setLeftPosition(0.34014f);
+        message.setTopPosition(0.716084f);
+        message.setRotationAngle(2.04852f);
+        message.setZIndexValue(1L);
         message.setType(1L);
         message.setBgcolor(1L);
         message.setSender(userRepository.findByUserId("1111111111"));

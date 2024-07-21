@@ -52,10 +52,10 @@ public class MessageDto {
 
     public MessageDto(Message message) {
         this.id = message.getId();
-        this.top = message.getTop();
-        this.left = message.getLeft();
-        this.rotate = message.getRotate();
-        this.zindex = message.getZindex();
+        this.top = message.getTopPosition();
+        this.left = message.getLeftPosition();
+        this.rotate = message.getRotationAngle();
+        this.zindex = message.getZIndexValue();
         this.createdAt = message.getCreatedAt();
         this.type = message.getType();
         try {
