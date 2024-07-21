@@ -27,17 +27,17 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "`top`", nullable = false)
-    private Float top;
+    @Column(name = "top_position", nullable = false)
+    private Float topPosition;
 
-    @Column(name = "`left`", nullable = false)
-    private Float left;
+    @Column(name = "left_position", nullable = false)
+    private Float leftPosition;
 
-    @Column(name = "`rotate`", nullable = false)
-    private Float rotate;
+    @Column(name = "rotation_angle", nullable = false)
+    private Float rotationAngle;
 
-    @Column(name = "`z_index`", nullable = false)
-    private Long zindex;
+    @Column(name = "z_index_value", nullable = false)
+    private Long zIndexValue;
 
     @Column(nullable = false)
     private Long type;
@@ -45,7 +45,6 @@ public class Message {
     @Column(name = "created_at")
     @CreatedDate
     private LocalDateTime createdAt;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "sender_id")

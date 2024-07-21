@@ -28,15 +28,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "USER")
+@Table(name = "APP_USER")
 @ToString
 public class User {
-    //    @JsonIgnore
-//    @Id
-//    @Column(name = "USER_SEQ")
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long userSeq;
-//
     @Id
     @Column(name = "USER_ID", length = 64, unique = true)
     @NotNull
@@ -47,16 +41,6 @@ public class User {
     @NotNull
     @Size(max = 100)
     private String username;
-
-//    @Column(name = "EMAIL", length = 512, unique = false)
-//    @NotNull
-//    @Size(max = 512)
-//    private String email;
-//
-//    @Column(name = "EMAIL_VERIFIED_YN", length = 1)
-//    @NotNull
-//    @Size(min = 1, max = 1)
-//    private String emailVerifiedYn;
 
     @Column(name = "PROFILE_IMAGE_URL", length = 512)
     @NotNull
@@ -81,21 +65,14 @@ public class User {
     @NotNull
     private LocalDateTime modifiedAt;
 
-
     @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
     private List<Message> sendMessage;
 
     @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
     private List<Message> receiveMessage;
 
-    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
-    private List<SecretMessage> sendSecretMessage;
-
-    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
-    private List<SecretMessage> receiveSecretMessage;
-
-    @OneToMany(mappedBy = "articleWriter", cascade = CascadeType.ALL)
-    private List<Article> articles;
+//    @OneToMany(mappedBy = "articleWriter", cascade = CascadeType.ALL)
+//    private List<Article> articles;
 
     public User(
             @NotNull @Size(max = 64) String userId,
